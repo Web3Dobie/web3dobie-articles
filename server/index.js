@@ -22,15 +22,23 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 // 1. Serve API first
 app.get("/api/articles", async (req, res) => {
   try {
-    const response = await notion.databases.query({
-      database_id: databaseId,
-      sorts: [{ property: "Date", direction: "descending" }],
-    });
+    const response = await notion.databases.query({ database_id: NOTION_DB_ID });
 
-    res.json(response.results);
+    const articles = response.results.map(page => ({
+      id: page.id,
+      date: page.properties?.Date?.date?.start || null,
+      headline: page.properties?.Headline?.title?.[0]?.text?.content || "Untitled",
+      summary: page.properties?.Summary?.rich_text?.[0]?.text?.content || "",
+      tags: page.properties?.Tags?.multi_select?.map(t => t.name) || [],
+      category: page.properties?.Category?.select?.name || null,
+      link: page.properties?.Tweet?.url || null,
+      status: page.properties?.Status?.status?.name || "Unknown",
+    }));
+
+    res.json(articles);
   } catch (err) {
-    console.error("❌ Notion fetch error:", err.message || err);
-    res.status(500).json({ error: "Failed to fetch data" });
+    console.error("❌ Failed to fetch articles from Notion:", err);
+    res.status(500).json({ error: "Failed to load articles." });
   }
 });
 

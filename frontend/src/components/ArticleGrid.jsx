@@ -3,7 +3,8 @@ import ArticleCard from "./ArticleCard";
 const groupByDate = (articles) => {
   return articles.reduce((acc, article) => {
     const date = new Date(article.date);
-    const year = date.getFullYear();
+    if (isNaN(date)) return acc; // skip broken dates
+    const year = isNaN(date) ? "Unknown" : date.getFullYear();
     const month = date.toLocaleString("default", { month: "long" });
     const day = date.getDate();
 
