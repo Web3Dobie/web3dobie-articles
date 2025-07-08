@@ -11,3 +11,28 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.article-card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.5rem;
+  border-radius: 8px;
+}
+
+.article-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.tag {
+  background: #eee;
+  padding: 2px 8px;
+  margin-right: 5px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.filter-panel {
+  margin-bottom: 1rem;
+}
