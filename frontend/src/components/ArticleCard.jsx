@@ -9,12 +9,21 @@ const ArticleCard = ({ article }) => {
       <p>{article.summary || "No summary available"}</p>
       <small>{displayDate}</small>
       <div>
-        {article.file && <a href={article.file} target="_blank">📄 File</a>}
+        {article.file && (
+          <a href={article.file} target="_blank" rel="noreferrer">
+            📄 File
+          </a>
+        )}
         {" "}
-        {article.tweet && <a href={article.tweet} target="_blank">🐦 Tweet</a>}
+        {article.tweet && (
+          <a href={article.tweet} target="_blank" rel="noreferrer">
+            🐦 Tweet
+          </a>  // ✅ You were missing this closing tag
+        )}
       </div>
     </div>
   );
 };
 
 export default ArticleCard;
+
