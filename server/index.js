@@ -12,8 +12,9 @@ console.log("🔑 NOTION_API_KEY:", process.env.NOTION_API_KEY ? "Loaded" : "Mis
 console.log("🗃️ NOTION_DATABASE_ID:", process.env.NOTION_DATABASE_ID ? "Loaded" : "Missing");
 console.log("📁 Serving static from:", path.join(__dirname, "build"));
 
-app.use(cors());
-// app.use(express.static(path.join(__dirname, "build")));
+app.use(cors({
+  origin: "https://articles.dutchbrat.com", // ✅ or "*" if testing
+}));
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_DATABASE_ID;
