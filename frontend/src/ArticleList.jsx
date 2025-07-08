@@ -5,7 +5,7 @@ const ArticleList = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch(`${process.env.REACT_APP_API_URL}/api/articles`)
+    fetch("https://w3d-articles-server-gfdbe9aqfbd2gceu.swedencentral-01.azurewebsites.net/api/articles")
       .then((res) => {
         if (!res.ok) {
           throw new Error("API fetch failed");
@@ -18,6 +18,7 @@ const ArticleList = () => {
         setError("Failed to fetch articles.");
       });
   }, []);
+
 
   return (
     <div>
