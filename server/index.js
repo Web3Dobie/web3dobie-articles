@@ -22,7 +22,7 @@ const databaseId = process.env.NOTION_DATABASE_ID;
 // 1. Serve API first
 app.get("/api/articles", async (req, res) => {
   try {
-    const response = await notion.databases.query({ database_id: NOTION_DB_ID });
+    const response = await notion.databases.query({ database_id: databaseId });
 
     const articles = response.results.map(page => ({
       id: page.id,
@@ -37,9 +37,11 @@ app.get("/api/articles", async (req, res) => {
 
     res.json(articles);
   } catch (err) {
-    console.error("❌ Failed to fetch articles from Notion:", err);
+    console.error("❌ Failed to fetch articles from Notion:");
+    console.error(err.body || err.message || err);
     res.status(500).json({ error: "Failed to load articles." });
-  }
+}
+
 });
 
 // 2. Serve static files second
