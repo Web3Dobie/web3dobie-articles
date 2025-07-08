@@ -2,8 +2,9 @@ name: Build and deploy Node.js app to Azure Web App - w3d-articles-server
 
 on:
   push:
-    branches:
-      - master
+    paths:
+      - 'server/**'
+      - '.github/workflows/backend.yml'
   workflow_dispatch:
 
 jobs:
