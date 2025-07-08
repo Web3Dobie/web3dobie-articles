@@ -1,5 +1,4 @@
 import ArticleCard from "./ArticleCard";
-import FilterPanel from "./FilterPanel";
 
 const groupByDate = (articles) => {
   return articles.reduce((acc, article) => {
