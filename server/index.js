@@ -13,11 +13,12 @@ console.log("🗃️ NOTION_DATABASE_ID:", process.env.NOTION_DATABASE_ID ? "Loa
 console.log("📁 Serving static from:", path.join(__dirname, "build"));
 
 app.use(cors());
-app.use(express.static(path.join(__dirname, "build")));
+// app.use(express.static(path.join(__dirname, "build")));
 
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_DATABASE_ID;
 
+// 1. Serve API first
 app.get("/api/articles", async (req, res) => {
   try {
     const response = await notion.databases.query({
@@ -32,9 +33,14 @@ app.get("/api/articles", async (req, res) => {
   }
 });
 
-app.get("/*", (req, res) => {
+// 2. Serve static files second
+app.use(express.static(path.join(__dirname, "build")));
+
+// 3. Fallback to index.html for all non-API, non-static requests
+app.get(/^\/(?!api).*/, (req, res) => {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
+
 
 app.listen(port, () => {
   console.log(`🚀 Listening on http://localhost:${port}`);
