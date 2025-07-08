@@ -5,7 +5,7 @@ const ArticleList = () => {
   const [error, setError] = useState("");
 
   useEffect(() => {
-    fetch("/api/articles")
+    fetch(`${process.env.REACT_APP_API_URL}/api/articles`)
       .then((res) => {
         if (!res.ok) {
           throw new Error("API fetch failed");
