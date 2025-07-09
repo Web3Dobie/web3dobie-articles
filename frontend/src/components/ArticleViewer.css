@@ -1,0 +1,44 @@
+.article-viewer-wrapper {
+  background-color: #fafafa;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.article-viewer {
+  background: white;
+  max-width: 960px;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.7;
+  font-size: 1.05rem;
+  color: #222;
+}
+
+.article-viewer h1,
+.article-viewer h2,
+.article-viewer h3 {
+  font-family: 'Segoe UI', Roboto, sans-serif;
+  font-weight: 600;
+  margin-top: 2rem;
+}
+
+.article-viewer p {
+  margin-bottom: 1.25rem;
+}
+
+.article-viewer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5rem auto;
+}
+
+.article-viewer img:first-of-type {
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  margin-bottom: 2rem;
+}

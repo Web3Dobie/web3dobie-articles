@@ -28,17 +28,25 @@ const ArticleViewer = () => {
   }, [id]);
 
   return (
-    <div className="article-viewer" style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
-      <button onClick={() => navigate("/")} style={{ marginBottom: "1rem" }}>
-        ← Back to Articles
-      </button>
-      {error ? (
-        <p style={{ color: "crimson" }}>{error}</p>
-      ) : (
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
-      )}
+    <div className="article-viewer-wrapper" style={{ display: "flex", justifyContent: "center" }}>
+        <div className="article-viewer" style={{ maxWidth: "960px", padding: "2rem" }}>
+        <button onClick={() => navigate("/")} style={{ marginBottom: "1rem" }}>
+            ← Back to Articles
+        </button>
+        <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
+            components={{
+            img: ({ node, ...props }) => (
+                <img {...props} style={{ maxWidth: "100%", height: "auto", display: "block", margin: "1.5rem auto" }} />
+            )
+            }}
+        >
+            {content}
+        </ReactMarkdown>
+        </div>
     </div>
-  );
+    );
+
 };
 
 export default ArticleViewer;
