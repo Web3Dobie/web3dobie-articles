@@ -13,28 +13,15 @@ function App() {
       .catch(err => console.error("Failed to fetch articles:", err));
   }, []);
 
-  const categories = [...new Set(articles.map(a =>
-    a.properties?.Category?.select?.name).filter(Boolean)
-  )];
-
-  const simplifiedArticles = articles.map(article => ({
-    id: article.id,
-    title: article.properties?.Headline?.title?.[0]?.text?.content,
-    summary: article.properties?.Summary?.rich_text?.[0]?.text?.content,
-    category: article.properties?.Category?.select?.name,
-    date: article.properties?.Date?.date?.start,
-    file: article.properties?.File?.url,
-    tweet: article.properties?.Tweet?.url,
-  }));
+  const categories = [...new Set(articles.map(a => a.category).filter(Boolean))];
 
   return (
     <div>
       <h1>Web3Dobie Articles</h1>
       <FilterPanel categories={categories} selected={filter} onChange={setFilter} />
-      <ArticleGrid articles={simplifiedArticles} filter={filter} />
+      <ArticleGrid articles={articles} filter={filter} />
     </div>
   );
 }
 
 export default App;
-// force deployment
