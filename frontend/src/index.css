@@ -7,6 +7,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1, h3 {
+  font-family: "Segoe UI", Roboto, sans-serif;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -45,14 +49,16 @@ code {
 
 .site-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
   margin-bottom: 2rem;
+  text-align: center;
 }
 
 .logo {
-  height: 60px;
-  border-radius: 8px;
+  height: 100px; /* 👈 Increase size */
+  border-radius: 12px;
 }
 
 .article-card {
