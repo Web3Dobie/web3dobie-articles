@@ -57,7 +57,7 @@ code {
 }
 
 .logo {
-  height: 180px; /* 👈 Increase this for a much larger logo */
+  height: 240px; /* 👈 Increase this for a much larger logo */
   border-radius: 16px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* optional: subtle depth */
 }

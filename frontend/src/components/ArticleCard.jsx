@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"; // ✅ Import at the top
 
 const ArticleCard = ({ article }) => {
-  const title = article.title || "Untitled";
+  const title = article.headline || "Untitled";
   const date = new Date(article.date);
   const displayDate = isNaN(date) ? "No date" : date.toLocaleDateString();
 
