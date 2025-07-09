@@ -1,17 +1,19 @@
+import { Link } from "react-router-dom"; // ✅ Import at the top
+
 const ArticleCard = ({ article }) => {
   const title = article.title || "Untitled";
   const date = new Date(article.date);
   const displayDate = isNaN(date) ? "No date" : date.toLocaleDateString();
 
-console.log("🔍 Article:", article);
-  
+  console.log("🔍 Article:", article);
+
   return (
     <div className="article-card">
       <h3>
         {article.file ? (
-          <a href={article.file} target="_blank" rel="noreferrer" className="article-link">
+          <Link to={`/article/${article.id}`} className="article-link">
             {title}
-          </a>
+          </Link>
         ) : (
           title
         )}
@@ -23,3 +25,4 @@ console.log("🔍 Article:", article);
 };
 
 export default ArticleCard;
+

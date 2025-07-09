@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";  // ✅ Fixes useState/useEf
 import Header from "./components/Header";
 import FilterPanel from "./components/FilterPanel";   // ✅ Fixes FilterPanel
 import ArticleGrid from "./components/ArticleGrid";   // ✅ Fixes ArticleGrid
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ArticleViewer from "./components/ArticleViewer";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -17,12 +19,22 @@ function App() {
   const categories = [...new Set(articles.map(a => a.category).filter(Boolean))];
 
   return (
-    <div className="container">
-      <Header />
-      <FilterPanel categories={categories} selected={filter} onChange={setFilter} />
-      <ArticleGrid articles={articles} filter={filter} />
-    </div>
+    <Router>
+      <div className="container">
+        <Header />
+        <Routes>
+          <Route path="/" element={
+            <>
+              <FilterPanel categories={categories} selected={filter} onChange={setFilter} />
+              <ArticleGrid articles={articles} filter={filter} />
+            </>
+          } />
+          <Route path="/article/:id" element={<ArticleViewer />} />
+        </Routes>
+      </div>
+    </Router>
   );
+
 }
 
 export default App;
