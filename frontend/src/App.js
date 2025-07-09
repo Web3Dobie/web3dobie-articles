@@ -1,6 +1,4 @@
-import { useEffect, useState } from "react";
-import ArticleGrid from "./components/ArticleGrid";
-import FilterPanel from "./components/FilterPanel";
+import Header from "./components/Header";
 
 function App() {
   const [articles, setArticles] = useState([]);
@@ -16,12 +14,10 @@ function App() {
   const categories = [...new Set(articles.map(a => a.category).filter(Boolean))];
 
   return (
-    <div>
-      <h1>Web3Dobie Articles</h1>
+    <div className="container">
+      <Header />
       <FilterPanel categories={categories} selected={filter} onChange={setFilter} />
       <ArticleGrid articles={articles} filter={filter} />
     </div>
   );
 }
-
-export default App;
