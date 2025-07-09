@@ -1,4 +1,7 @@
+import React, { useEffect, useState } from "react";  // ✅ Fixes useState/useEffect
 import Header from "./components/Header";
+import FilterPanel from "./components/FilterPanel";   // ✅ Fixes FilterPanel
+import ArticleGrid from "./components/ArticleGrid";   // ✅ Fixes ArticleGrid
 
 function App() {
   const [articles, setArticles] = useState([]);
