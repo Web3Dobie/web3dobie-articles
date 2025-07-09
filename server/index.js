@@ -33,6 +33,7 @@ app.get("/api/articles", async (req, res) => {
       category: page.properties?.Category?.select?.name || null,
       link: page.properties?.Tweet?.url || null,
       status: page.properties?.Status?.status?.name || "Unknown",
+      file: page.properties?.File?.url || null, // ✅ Correctly added
     }));
 
     res.json(articles);
@@ -40,8 +41,7 @@ app.get("/api/articles", async (req, res) => {
     console.error("❌ Failed to fetch articles from Notion:");
     console.error(err.body || err.message || err);
     res.status(500).json({ error: "Failed to load articles." });
-}
-
+  } // ✅ This closing brace was missing
 });
 
 // 2. Serve static files second
