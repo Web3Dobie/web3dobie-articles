@@ -3,6 +3,8 @@ const ArticleCard = ({ article }) => {
   const date = new Date(article.date);
   const displayDate = isNaN(date) ? "No date" : date.toLocaleDateString();
 
+console.log("🔍 Article:", article);
+  
   return (
     <div className="article-card">
       <h3>
