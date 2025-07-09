@@ -27,7 +27,7 @@ app.get("/api/articles", async (req, res) => {
     const articles = response.results.map(page => ({
       id: page.id,
       date: page.properties?.Date?.date?.start || null,
-      headline: page.properties?.Headline?.title?.[0]?.text?.content || "Untitled",
+      headline: page.properties?.Headline?.title?.[0]?.plain_text || "Untitled",
       summary: page.properties?.Summary?.rich_text?.[0]?.text?.content || "",
       tags: page.properties?.Tags?.multi_select?.map(t => t.name) || [],
       category: page.properties?.Category?.select?.name || null,
