@@ -34,10 +34,11 @@ const ArticleViewer = () => {
         <button onClick={() => navigate("/")} style={{ marginBottom: "1rem" }}>
             ← Back to Articles
         </button>
+        {error && <p style={{ color: "crimson" }}>{error}</p>}
         <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-            img: ({ node, ...props }) => <img {...props} />
+            img: ({ node, ...props }) => <img {...props} alt={props.alt || ""} />
             }}
         >
             {content}
