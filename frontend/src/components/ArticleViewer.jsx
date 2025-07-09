@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import './ArticleViewer.css';
 
 const ArticleViewer = () => {
   const { id } = useParams();
@@ -28,17 +29,15 @@ const ArticleViewer = () => {
   }, [id]);
 
   return (
-    <div className="article-viewer-wrapper" style={{ display: "flex", justifyContent: "center" }}>
-        <div className="article-viewer" style={{ maxWidth: "960px", padding: "2rem" }}>
+    <div className="article-viewer-wrapper">
+        <div className="article-viewer">
         <button onClick={() => navigate("/")} style={{ marginBottom: "1rem" }}>
             ← Back to Articles
         </button>
         <ReactMarkdown
             remarkPlugins={[remarkGfm]}
             components={{
-            img: ({ node, ...props }) => (
-                <img {...props} style={{ maxWidth: "100%", height: "auto", display: "block", margin: "1.5rem auto" }} />
-            )
+            img: ({ node, ...props }) => <img {...props} />
             }}
         >
             {content}
