@@ -1,18 +1,26 @@
-# Node dependencies
-**/node_modules/
-
-# Build output
-**/build/
-
-# Testing output
-coverage/
-
-# Local env files
+# Root
 .env
 .env.*.local
-
-# Misc
 .DS_Store
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+*.log
+logs/
+
+# Frontend
+/frontend/node_modules/
+frontend/build/
+frontend/.env.local
+
+# Backend (Express API)
+server/node_modules/
+server/dist/
+server/.env
+
+# Azure + GitHub artifacts
+*.publishsettings
+*.PublishProfiles/
+release.zip
+
+# IDE/editor stuff
+.vscode/
+*.swp
+
