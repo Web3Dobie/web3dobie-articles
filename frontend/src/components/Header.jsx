@@ -1,14 +1,16 @@
 import React from "react";
-import hunterLogo from "../assets/hunter_reading.png"; // Ensure this path is correct
+import hunterLogo from "../assets/hunter_reading.png";
 
 const Header = () => (
-  <header className="flex flex-col items-center mt-8 mb-6">
+  <header className="text-center py-6">
     <img
       src={hunterLogo}
       alt="Hunter reading"
-      className="w-32 h-auto rounded-full shadow-md mb-2"
+      className="mx-auto w-32 md:w-40 lg:w-48 rounded-full shadow"
     />
-    <h1 className="text-2xl font-bold text-white">Web3Dobie Articles</h1>
+    <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mt-4">
+      Web3Dobie Articles
+    </h1>
   </header>
 );
 
