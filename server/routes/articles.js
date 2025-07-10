@@ -67,3 +67,4 @@ async function streamToString(readableStream) {
     return chunks.join('');
 }
 
+module.exports = router;
