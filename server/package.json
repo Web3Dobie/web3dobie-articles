@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@azure/storage-blob": "^12.27.0",
     "@notionhq/client": "^4.0.0",
     "cors": "^2.8.5",
     "dotenv": "^17.1.0",
