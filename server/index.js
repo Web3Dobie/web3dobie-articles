@@ -12,8 +12,20 @@ console.log("🔑 NOTION_API_KEY:", process.env.NOTION_API_KEY ? "Loaded" : "Mis
 console.log("🗃️ NOTION_DATABASE_ID:", process.env.NOTION_DATABASE_ID ? "Loaded" : "Missing");
 console.log("📁 Serving static from:", path.join(__dirname, "build"));
 
+const allowedOrigins = [
+  "https://dutchbrat.com",
+  "https://www.dutchbrat.com",
+  "https://articles.dutchbrat.com",
+];
+
 app.use(cors({
-  origin: "https://articles.dutchbrat.com", // ✅ or "*" if testing
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 }));
 
 const articleRoutes = require('./routes/articles');
