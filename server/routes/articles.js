@@ -44,7 +44,13 @@ router.get('/latest', async (req, res) => {
         const imageMatch = imageLine?.match(/\((.*?)\)/);
         const image = imageMatch ? imageMatch[1] : null;
 
-        const summary = lines.find(line => !line.startsWith('#') && !line.startsWith('![')) || '';
+        const summary = lines.find(
+            line =>
+                !line.startsWith('#') &&
+                !line.startsWith('![') &&
+                !line.toLowerCase().startsWith('[gpt generation') &&
+                line.trim() !== ''
+            ) || '';
 
         res.json({
             title,
