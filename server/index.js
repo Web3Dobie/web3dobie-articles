@@ -16,6 +16,9 @@ app.use(cors({
   origin: "https://articles.dutchbrat.com", // ✅ or "*" if testing
 }));
 
+const articleRoutes = require('./routes/articles');
+app.use('/api', articleRoutes);
+
 const notion = new Client({ auth: process.env.NOTION_API_KEY });
 const databaseId = process.env.NOTION_DATABASE_ID;
 
